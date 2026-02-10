@@ -6,8 +6,19 @@ then performs the operation and returns the result.
 
 The script asks the user to input the numbers and the operation to be performed,
 and prints the result to the terminal window.
-
+on
 """
+def check_valid(num:str):
+    #print("here 1: ", num)
+    if num.isnumeric() == True:
+        #print("here 2", num)
+        return num
+    elif num.isnumeric() == False:
+        num=input("Please type valid number here:")
+        return check_valid(num)
+    else:
+        #print("I am going crazy")
+        pass
 
 def simple_calculator(operation: str, num1: float, num2: float) -> float:
     """
@@ -42,10 +53,12 @@ def main():
     print(f"===== Simple Calculator =====")
 
     # Ask the user for sample input    
-    num1 = float(input("Enter the first number: "))
-    num2 = float(input("Enter the second number: "))
+    num1 = input("Enter the first number: ")
+    num2 = input("Enter the second number: ")
+    #print("check_valid: ", check_valid(num1))
+    num1=float(check_valid(num1))
+    num2=float(check_valid(num2))
     operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
-
     # Perform the calculation and display the result
     result = simple_calculator(operation, num1, num2)
     print(f"The result of {operation}ing {num1} and {num2} is: {result}")
