@@ -9,16 +9,11 @@ and prints the result to the terminal window.
 on
 """
 def check_valid(num:str):
-    #print("here 1: ", num)
-    if num.isnumeric() == True:
-        #print("here 2", num)
-        return num
-    elif num.isnumeric() == False:
+    while num.isnumeric() == False:
         num=input("Please type valid number here:")
         return check_valid(num)
-    else:
-        #print("I am going crazy")
-        pass
+    return num
+
 
 def simple_calculator(operation: str, num1: float, num2: float) -> float:
     """
@@ -57,9 +52,9 @@ def main():
 
     # Ask the user for sample input    
     num1 = input("Enter the first number: ")
+    num1=float(check_valid(num1))
     num2 = input("Enter the second number: ")
     #print("check_valid: ", check_valid(num1))
-    num1=float(check_valid(num1))
     num2=float(check_valid(num2))
     operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
     # Perform the calculation and display the result
